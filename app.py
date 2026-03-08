@@ -125,7 +125,10 @@ st.markdown("""
 自分のタイプならどう言うか、あの人ならどう表現するか、心の個性を楽しんでみてください。
 """)
 
-st.subheader("1. タイプを選択")
+st.subheader("1. 文章を入力")
+user_input = st.text_area("何を書き換える？", "今日はいい天気ですね。")
+
+st.subheader("2. タイプを選択")
 options = [f"{v['icon']} {k}" for k, v in mbti_data.items()]
 selected_option = st.selectbox("どれに変身する？", options)
 selected_type = selected_option.split(" ", 1)[1]
@@ -133,8 +136,7 @@ selected_type = selected_option.split(" ", 1)[1]
 # 特徴を表示
 st.info(f"**【{selected_type}の特徴】**\n{mbti_data[selected_type]['info']}")
 
-st.subheader("2. 文章を入力")
-user_input = st.text_area("何を書き換える？", "今日はいい天気ですね。")
+
 
 if st.button("変換する！", use_container_width=True):
     with st.spinner("思考回路を書き換え中..."):
